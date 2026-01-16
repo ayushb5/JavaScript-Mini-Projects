@@ -151,7 +151,7 @@ concat.onclick = function () {
 padstart.onclick = function () {
   let str1 = prompt("Enter Number:");
   let str2 = prompt("Enter Length:");
-  let str3 = prompt("Enter String:");
+  let str3 = prompt("Enter padString:");
 
   console.log(
     "Before padStart(): 5\nAfter padStart(): ",
