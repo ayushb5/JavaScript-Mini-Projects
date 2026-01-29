@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+    <style>
+      .MainContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        position: relative;
+        width: 700px;
+        height: 700px;
+        margin-top: 0;
+      }
+      .box {
+        position: absolute;
+        height: 25%;
+        width: 25%;
+      }
+      #red {
+        background-color: red;
+        top: 0;
+      }
+      #green {
+        background-color: green;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      #blue {
+        background-color: blue;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      #yellow {
+        background-color: yellow;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      button {
+        display: block;
+        padding: 3px;
+        margin: 5px;
+        gap: 2;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="MainContainer">
+      <button onclick="start()">Start</button>
+      <div class="container">
+        <div id="red" class="box"></div>
+        <div id="green" class="box"></div>
+        <div id="blue" class="box"></div>
+        <div id="yellow" class="box"></div>
+      </div>
+      <button id="stop">Stop</button>
+    </div>
+
+    <script>
+      let red = document.getElementById("red");
+      let green = document.getElementById("green");
+      let blue = document.getElementById("blue");
+      let yellow = document.getElementById("yellow");
+
+      function start() {
+        let count = 0;
+        let myInterval = setInterval(() => {
+          count += 5;
+          //   red
+          red.style.top = count + "%";
+          red.style.left = count + "%";
+          yellow.style.bottom = count + "%";
+          yellow.style.right = count + "%";
+          green.style.top = count + "%";
+          green.style.right = count + "%";
+          blue.style.bottom = count + "%";
+          blue.style.left = count + "%";
+
+          if (count == 75) {
+            red.style.backgroundColor = "yellow";
+            yellow.style.backgroundColor = "red";
+            green.style.backgroundColor = "blue";
+            blue.style.backgroundColor = "green";
+            clearInterval(myInterval);
+          }
+
+          document.getElementById("stop").onclick = function () {
+            clearInterval(myInterval);
+          };
+        }, 100);
+      }
+    </script>
+  </body>
+</html>

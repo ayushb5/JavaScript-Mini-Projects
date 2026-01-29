@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval</title>
+    <style>
+      #box {
+        height: 150px;
+        width: 150px;
+        background-color: blue;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <button onclick="start()">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+
+  <script>
+    let box = document.getElementById("box");
+    function start() {
+      let count = 0;
+      let myInterval = setInterval(() => {
+        count += 100;
+        if (count <= 1300) {
+          box.style.marginLeft = count + "px";
+        } else {
+          box.style.marginLeft = "0px";
+          count = 0;
+        }
+      }, 200);
+
+      document.getElementById("stop").onclick = function () {
+        clearInterval(myInterval);
+        console.log("button Clicked");
+        count = 0;
+      };
+    }
+  </script>
+</html>
